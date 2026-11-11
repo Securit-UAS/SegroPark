@@ -9,4 +9,4 @@
 
 **Model payload:** 135,242,336 bytes; the 7 parts are byte-for-byte identical to the original GLB when concatenated. The actual browser viewer transparently loads all 7 and reconstructs the same 3D model. This is a presentation model, not an engineering measurement tool. The Autodesk Viewer share link is temporary (~30 days from 11 November 2026); the DWG download persists while the site is hosted.
 
-**Local test:** In Terminal `cd` to the extracted directory and run `python3 -m http.server 8000 --bind 127.0.0.1`, then open `http://localhost:8000/`.
+**Local test:** In Terminal `cd` to the extracted directory and  run `python3 -m http.server 8000 --bind 127.0.0.1`, then open `http://localhost:8000/`.
