@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b1018">
 <meta name="description" content="Interactive three-dimensional visual overview of Segro Park Northampton, prepared by SecurIT.">
-<title>Segro Park Northampton | SecurIT &amp; McLaren</title>
+<title>Segro Park Northampton | SecurIT Survey Portal</title>
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 <style>
@@ -44,7 +44,7 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;min-height:0;displ
 .brand{align-items:center}.brand-sub{font-size:10px;line-height:1.3}
 @media(max-width:560px){.securit-logo{width:145px}.mclaren-logo{width:132px}.brand-group{gap:10px}.partner{padding-left:10px}}
 
-/* v1.5: balanced centred captions beneath both supplied official logos */
+/* v1.7: SecurIT-only survey branding */
 .securit-logo-group,.partner-logo-group{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
 .securit-logo,.mclaren-logo{object-position:center center}
 .brand-sub,.partner-sub{font-size:10px;line-height:1.3;letter-spacing:.105em;text-transform:uppercase;text-align:center;margin-top:0;white-space:nowrap;color:#9bacbd}
@@ -55,7 +55,7 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;min-height:0;displ
 </head>
 <body>
 <div class="app" id="app">
-<header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">Survey &amp; 3D visualisation</div></div></div><div class="partner" aria-label="McLaren Construction, project client"><div class="partner-logo-group"><img class="mclaren-logo" src="./assets/mclaren-logo-white.png" alt="McLaren" width="212" height="43"><div class="partner-sub">Project Client</div></div></div></div><span class="label">Interactive 3D survey</span></header>
+<header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">Survey &amp; 3D visualisation</div></div></div></div><span class="label">Interactive 3D survey</span></header>
 <div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>Segro Park Northampton</h1><p>Drone-derived textured 3D site model · Rotate, pan and zoom to explore</p></div><div class="meta">Presentation visualisation &nbsp;•&nbsp; Not for engineering measurement</div></div>
 <section class="stage" id="stage" aria-label="Interactive 3D model">
 <model-viewer id="model" alt="Photogrammetry 3D reconstruction of Segro Park Northampton" camera-controls touch-action="pan-y" shadow-intensity="0.35" exposure="1.0" camera-orbit="0deg 42deg auto" field-of-view="30deg" interaction-prompt="auto" loading="eager"></model-viewer>
