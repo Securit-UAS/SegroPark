@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1018">
+<meta name="description" content="Interactive three-dimensional visual overview of Segro Park Northampton, prepared by SecurIT.">
+<title>Segro Park Northampton | SecurIT &amp; McLaren</title>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#0b1018;--panel:#111b27;--edge:#273444;--text:#edf3f8;--muted:#a1afbf;--accent:#44b6d8;--pad:clamp(14px,3vw,32px)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+.app{min-height:100dvh;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px var(--pad);border-bottom:1px solid var(--edge);background:#0e1621;z-index:5;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px}.brand-group{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.partner{display:flex;align-items:center;gap:11px;padding-left:20px;border-left:1px solid #3a4656}.partner-wordmark{font-weight:820;font-size:17px;letter-spacing:-.025em;color:#e9f2f7}.partner-sub{font-size:10px;color:#98abba;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}.brand-mark{width:36px;height:36px;display:grid;place-items:center;border:1px solid #3689a5;background:#132a3b;border-radius:9px;color:#8be2f7;font-size:22px;font-weight:800}.brand-title{font-size:17px;font-weight:800;letter-spacing:.035em}.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-top:3px}.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#84cde2;border:1px solid #315569;border-radius:100px;padding:8px 12px}
+.intro{display:flex;align-items:end;justify-content:space-between;gap:14px;padding:20px var(--pad) 18px;flex-wrap:wrap}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:7px}.intro h1{font-size:clamp(23px,3vw,36px);line-height:1.1;margin:0;font-weight:680}.intro p{margin:7px 0 0;color:var(--muted);font-size:13px}.meta{font-size:12px;color:var(--muted);padding-bottom:5px}
+.stage{position:relative;flex:none;height:clamp(440px,66dvh,900px);min-height:440px;margin:0 var(--pad);border:1px solid var(--edge);border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 50% 22%,#273645 0%,#17212c 45%,#0d151e 100%)}
+model-viewer{position:absolute;inset:0;width:100%;height:100%;min-height:0;display:block;outline:0;--poster-color:transparent}.stage:fullscreen{width:100vw;height:100dvh;min-height:0;margin:0;border:0;border-radius:0}
+.overlay{position:absolute;top:18px;left:18px;z-index:3;max-width:min(360px,calc(100% - 36px));background:#101a25ee;border:1px solid #344656;border-radius:12px;padding:18px;box-shadow:0 16px 45px #0007;backdrop-filter:blur(8px)}.overlay strong{display:block;font-size:15px;margin-bottom:7px}.overlay p{font-size:12px;line-height:1.6;color:#b9c6d3;margin:0 0 12px}.track{height:5px;background:#314352;border-radius:10px;overflow:hidden}.bar{height:100%;width:0%;background:linear-gradient(90deg,#277b9e,#80dff6);transition:width .18s}.loading-stat{font-size:11px;color:#a6bac9;margin-top:9px}.overlay button{margin-top:12px}
+.control-panel{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:15px var(--pad);background:#0e1621;border-bottom:1px solid var(--edge)}button{appearance:none;background:#192532;color:#e7f4f8;border:1px solid #344758;border-radius:9px;padding:10px 15px;font:600 12px inherit;cursor:pointer;transition:background .15s,border-color .15s}button:hover{background:#26394b;border-color:#5e8da3}button:focus-visible{outline:2px solid #82e4ff;outline-offset:2px}button.primary{background:#16485c;border-color:#3c8298;color:#ddf8ff}button[aria-pressed=true]{background:#21576a;border-color:#6abbd2}.control-spacer{flex:1}.hint{color:var(--muted);font-size:12px}
+.project-links{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 var(--pad);padding:18px 20px;border:1px solid #2e4d60;border-top:0;background:#102331}.project-links h2{font-size:15px;margin:0 0 5px}.project-links p{font-size:12px;color:#b8cedb;margin:0;line-height:1.6}.project-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;white-space:normal;text-decoration:none;background:#236884;border:1px solid #539fbc;color:#fff;font-size:13px;font-weight:750;padding:12px 17px;border-radius:9px}.project-links a:hover{background:#2b819e}.project-links a:focus-visible{outline:2px solid #82e4ff;outline-offset:3px}.foot{padding:13px var(--pad) 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8193a4;font-size:11px}.foot b{color:#acc0cd;font-weight:500}.note{line-height:1.6}.fatal{color:#ffbca7}.small{font-size:11px;color:#93afc0;line-height:1.4}
+@media(max-width:700px){.stage{margin:0 10px;height:60dvh;min-height:340px}.top{padding:12px 14px}.brand-group{gap:12px}.partner{padding-left:12px}.partner-wordmark{font-size:14px}.project-links{margin:0 10px;padding:15px}.project-links a{width:100%}.intro{padding:16px 14px}.control-panel{padding:12px 14px}.control-panel button{padding:10px 12px}.project-links{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 var(--pad);padding:18px 20px;border:1px solid #2e4d60;border-top:0;background:#102331}.project-links h2{font-size:15px;margin:0 0 5px}.project-links p{font-size:12px;color:#b8cedb;margin:0;line-height:1.6}.project-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;white-space:normal;text-decoration:none;background:#236884;border:1px solid #539fbc;color:#fff;font-size:13px;font-weight:750;padding:12px 17px;border-radius:9px}.project-links a:hover{background:#2b819e}.project-links a:focus-visible{outline:2px solid #82e4ff;outline-offset:3px}.foot{padding:13px 14px}.hint{display:none}.overlay{top:10px;left:10px}}
+
+/* v1.2: Survey access cards */
+.survey-access{margin:12px var(--pad) 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.access-card{background:#102331;border:1px solid #2e4d60;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.access-card h2{font-size:15px;margin:0;color:#f0f7fc}.access-card p{font-size:12px;line-height:1.55;color:#b8cedb;margin:0;flex:1}
+.access-card .actions{display:flex;flex-wrap:wrap;gap:9px}
+.access-card a{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:38px;text-decoration:none;background:#236884;border:1px solid #539fbc;color:#fff;font-size:12px;font-weight:750;padding:10px 13px;border-radius:9px}
+.access-card a.secondary{background:#192e3b;border-color:#476273}.access-card a:hover{background:#2b819e}.access-card a:focus-visible{outline:2px solid #82e4ff;outline-offset:3px}
+.access-card small{font-size:11px;color:#94acbd;line-height:1.4}
+@media(max-width:900px){.survey-access{grid-template-columns:1fr}}@media(max-width:700px){.survey-access{margin:12px 10px 0}}
+
+/* v1.3: client artwork + responsive, balanced header */
+.partner-logo-group{display:flex;flex-direction:column;justify-content:center;gap:3px}
+.mclaren-logo{display:block;width:clamp(144px,14vw,212px);height:auto;object-fit:contain;object-position:left center}
+.brand-group{min-height:46px}
+.top{padding-block:12px}
+@media(max-width:560px){.mclaren-logo{width:140px}.partner{padding-left:12px}.brand-title{font-size:15px}.brand-sub,.partner-sub{font-size:9px}.label{display:none}}
+
+/* v1.4: supplied official SecurIT logo paired with supplied McLaren artwork */
+.securit-logo-group{display:flex;flex-direction:column;justify-content:center;gap:2px}
+.securit-logo{display:block;width:clamp(144px,12.5vw,192px);height:auto;object-fit:contain}
+.brand{align-items:center}.brand-sub{font-size:10px;line-height:1.3}
+@media(max-width:560px){.securit-logo{width:145px}.mclaren-logo{width:132px}.brand-group{gap:10px}.partner{padding-left:10px}}
+
+/* v1.5: balanced centred captions beneath both supplied official logos */
+.securit-logo-group,.partner-logo-group{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+.securit-logo,.mclaren-logo{object-position:center center}
+.brand-sub,.partner-sub{font-size:10px;line-height:1.3;letter-spacing:.105em;text-transform:uppercase;text-align:center;margin-top:0;white-space:nowrap;color:#9bacbd}
+.brand-group{align-items:center;gap:22px}
+.partner{padding-left:22px;align-self:stretch;align-items:center}
+@media(max-width:560px){.brand-group{gap:12px}.partner{padding-left:12px}.brand-sub,.partner-sub{font-size:8px;letter-spacing:.055em;white-space:normal}.securit-logo-group,.partner-logo-group{gap:6px}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">Survey &amp; 3D visualisation</div></div></div><div class="partner" aria-label="McLaren Construction, project client"><div class="partner-logo-group"><img class="mclaren-logo" src="./assets/mclaren-logo-white.png" alt="McLaren" width="212" height="43"><div class="partner-sub">Project Client</div></div></div></div><span class="label">Interactive 3D survey</span></header>
+<div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>Segro Park Northampton</h1><p>Drone-derived textured 3D site model · Rotate, pan and zoom to explore</p></div><div class="meta">Presentation visualisation &nbsp;•&nbsp; Not for engineering measurement</div></div>
+<section class="stage" id="stage" aria-label="Interactive 3D model">
+<model-viewer id="model" alt="Photogrammetry 3D reconstruction of Segro Park Northampton" camera-controls touch-action="pan-y" shadow-intensity="0.35" exposure="1.0" camera-orbit="0deg 42deg auto" field-of-view="30deg" interaction-prompt="auto" loading="eager"></model-viewer>
+<div class="overlay" id="loading"><strong id="loadingTitle">Preparing the site model</strong><p id="loadingDesc">Your browser is loading the 3D survey. On a slower connection this may take a moment.</p><div class="track"><div class="bar" id="progress"></div></div><div class="loading-stat" id="loadingStat" role="status">Starting…</div><button id="retry" style="display:none" type="button">Retry loading</button></div>
+</section>
+<nav class="control-panel" aria-label="3D viewing controls">
+<button class="primary" type="button" id="overview" aria-label="Show overview">↗ &nbsp; Overview</button>
+<button type="button" id="top" aria-label="Show top-down view">⊞ &nbsp; Overhead</button>
+<button type="button" id="angle" aria-label="Show low-angle view">◫ &nbsp; Low angle</button>
+<button type="button" id="tour" aria-pressed="false">⟳ &nbsp; Auto orbit</button>
+<span class="control-spacer"></span><span class="hint">Drag to orbit &nbsp; · &nbsp; Scroll to zoom &nbsp; · &nbsp; Right-drag to pan</span>
+<button type="button" id="full">⛶ &nbsp; Full screen</button>
+<button type="button" id="link">⧉ &nbsp; Copy link</button>
+</nav>
+<section class="survey-access" aria-label="Survey model CAD and export access">
+<article class="access-card"><h2>3D terrain model</h2><p>Explore the textured aerial reconstruction using the viewer above. Rotate, zoom and switch viewpoints without specialist software.</p><small>Presentation visualisation only · Not for engineering measurement</small></article>
+<article class="access-card"><h2>CAD drawing · labelled contours</h2><p>Open the corrected 3D contour DWG in Autodesk Viewer, or download the drawing for use in CAD software and permanent project records.</p><div class="actions"><a href="https://viewer.autodesk.com/preview/id/dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YTM2MHZpZXdlci1wcm90ZWN0ZWQvdDE3OTQzOTE1ODNfODI5ZDE0MTEtMGUxMi00ZGRlLWJjMDgtNWY5YjRkMzBjZDE5LmR3Zw" target="_blank" rel="noopener noreferrer">View DWG in Autodesk ↗</a><a class="secondary" href="./downloads/Segro_Park_V2_Labelled.dwg" download="Segro_Park_V2_Labelled.dwg">↓ Download DWG (8.5 MB)</a></div><small>Autodesk shared preview is temporary (approximately 30 days from 11 November 2026). The DWG download remains available while this site is hosted.</small></article>
+<article class="access-card"><h2>Survey mapping &amp; other file exports</h2><p>Open the original DroneDeploy project for survey mapping and available downloadable datasets. Export access depends on the project share permissions.</p><div class="actions"><a href="https://www.dronedeploy.com/app2/sites/6aea03f47fdb74439c8b261c/maps/6aea05b5d8d36e37c9140090?jwt_token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZWEwNjdkNzY0OWYyZmY1NzZjOGMyZCIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.2qIS53oX9UM-9lL8G933PcZk7PpbIBiYobrE1dMqMUr2MVsL7shUZcgoPd18eMhpUYKERm1YagUNjwjHUiM67Q" target="_blank" rel="noopener noreferrer">Open DroneDeploy &amp; file exports ↗</a></div><small>External project sharing permissions apply.</small></article>
+</section>
+<footer class="foot"><div class="note"><b>SecurIT</b> · Survey visualisation prepared for project review. The optimised model is for presentation only; refer to the issued CAD and survey datasets for engineering decisions.</div><div>© 2026 SecurIT · Segro Park Northampton</div></footer>
+</div>
+<script>
+'use strict';
+const files=['segro.part01','segro.part02','segro.part03','segro.part04','segro.part05','segro.part06','segro.part07'];
+const model=document.getElementById('model');const loading=document.getElementById('loading');
+const progress=document.getElementById('progress');const stat=document.getElementById('loadingStat');
+const title=document.getElementById('loadingTitle');const desc=document.getElementById('loadingDesc');
+let modelUrl=null;let loadedBytes=0;
+const mb=v=>(v/1048576).toFixed(1);
+async function fetchPart(name,index){
+ const res=await fetch('./assets/'+name,{cache:'force-cache'});
+ if(!res.ok)throw new Error(`Unable to load ${name} (HTTP ${res.status})`);
+ if(!res.body)return new Blob([await res.arrayBuffer()]);
+ const reader=res.body.getReader();const chunks=[];
+ while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);loadedBytes+=value.byteLength;stat.textContent=`Downloaded ${mb(loadedBytes)} MB of model data…`;progress.style.width=`${Math.min(94,loadedBytes/135242336*94)}%`;}
+ return new Blob(chunks,{type:'application/octet-stream'});
+}
+async function start(){
+ loadedBytes=0;loading.style.display='block';document.getElementById('retry').style.display='none';
+ title.textContent='Preparing the site model';desc.textContent='Your browser is loading the 3D survey. On a slower connection this may take a moment.';stat.classList.remove('fatal');progress.style.width='0%';
+ try{
+  const pieces=await Promise.all(files.map(fetchPart));
+  const combined=new Blob(pieces,{type:'model/gltf-binary'});
+  if(combined.size!==135242336)throw new Error('The model is incomplete. Check all model segments are present.');
+  if(modelUrl)URL.revokeObjectURL(modelUrl);
+  modelUrl=URL.createObjectURL(combined);
+  stat.textContent='Preparing interactive 3D view…';progress.style.width='96%';
+  model.src=modelUrl;
+ }catch(err){title.textContent='Could not load model';desc.textContent='Check that the site is hosted over HTTP(S) and all asset files have been uploaded.';stat.textContent=err.message;stat.classList.add('fatal');document.getElementById('retry').style.display='inline-block';console.error(err);}
+}
+model.addEventListener('load',()=>{progress.style.width='100%';loading.style.display='none';});
+model.addEventListener('error',e=>{title.textContent='Unable to display model';desc.textContent='The file could not be rendered by this browser.';stat.textContent='Try Chrome, Safari or Edge with hardware acceleration enabled.';loading.style.display='block';document.getElementById('retry').style.display='inline-block';console.error('Model viewer error',e);});
+document.getElementById('retry').addEventListener('click',start);
+const tour=document.getElementById('tour');
+function stopTour(){model.autoRotate=false;tour.setAttribute('aria-pressed','false');tour.textContent='⟳  Auto orbit';}
+function view(orbit){stopTour();model.cameraOrbit=orbit;model.cameraTarget='auto';model.fieldOfView='30deg';}
+document.getElementById('overview').onclick=()=>view('0deg 42deg auto');
+document.getElementById('top').onclick=()=>view('0deg 0deg auto');
+document.getElementById('angle').onclick=()=>view('55deg 73deg auto');
+tour.onclick=()=>{model.autoRotate=!model.autoRotate;tour.setAttribute('aria-pressed',String(model.autoRotate));tour.textContent=model.autoRotate?'Ⅱ  Stop orbit':'⟳  Auto orbit';};
+document.getElementById('full').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else document.getElementById('stage').requestFullscreen?.();};
+document.getElementById('link').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);const btn=document.getElementById('link');btn.textContent='✓  Copied';setTimeout(()=>btn.textContent='⧉  Copy link',1800);}catch{prompt('Copy the viewer link:',location.href);}};
+start();
+</script>
+</body></html>
