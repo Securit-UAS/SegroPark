@@ -61,7 +61,7 @@ button:hover:not(:disabled),.action:hover:not(.disabled),.project-links a:hover,
 <header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">Survey &amp; 3D visualisation</div></div></div></div><span class="label">Interactive 3D survey</span></header>
 <div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>Segro Park Northampton</h1><p>Drone-derived textured 3D site model · Rotate, pan and zoom to explore</p></div><div class="meta">Presentation visualisation &nbsp;•&nbsp; Not for engineering measurement</div></div>
 <div class="planner-selector"><span class="eyebrow">Segro Park Northampton · Full site</span><a class="planner-link" href="./planner/v2.html">▦ Open 2D Site Planner · v2 Alpha</a></div><section class="stage" id="stage" aria-label="Interactive 3D model">
-<model-viewer id="model" alt="Photogrammetry 3D reconstruction of Segro Park Northampton" camera-controls touch-action="pan-y" shadow-intensity="0.35" exposure="1.0" camera-orbit="0deg 42deg auto" field-of-view="30deg" interaction-prompt="auto" loading="eager"></model-viewer>
+<model-viewer id="model" alt="Photogrammetry 3D reconstruction of Segro Park Northampton" camera-controls touch-action="pan-y" shadow-intensity="0.35" exposure="1.0" camera-orbit="0deg 42deg auto" rotation-per-second="3deg" field-of-view="30deg" interaction-prompt="auto" loading="eager"></model-viewer>
 <div class="overlay" id="loading"><strong id="loadingTitle">Preparing the site model</strong><p id="loadingDesc">Your browser is loading the 3D survey. On a slower connection this may take a moment.</p><div class="track"><div class="bar" id="progress"></div></div><div class="loading-stat" id="loadingStat" role="status">Starting…</div><button id="retry" style="display:none" type="button">Retry loading</button></div>
 </section>
 <nav class="control-panel" aria-label="3D viewing controls">
@@ -109,7 +109,7 @@ async function start(){
   model.src=modelUrl;
  }catch(err){title.textContent='Could not load model';desc.textContent='Check that the site is hosted over HTTP(S) and all asset files have been uploaded.';stat.textContent=err.message;stat.classList.add('fatal');document.getElementById('retry').style.display='inline-block';console.error(err);}
 }
-model.addEventListener('load',()=>{progress.style.width='100%';loading.style.display='none';});
+model.addEventListener('load',()=>{progress.style.width='100%';loading.style.display='none';model.autoRotate=true;tour.setAttribute('aria-pressed','true');tour.textContent='Ⅱ  Stop orbit';});
 model.addEventListener('error',e=>{title.textContent='Unable to display model';desc.textContent='The file could not be rendered by this browser.';stat.textContent='Try Chrome, Safari or Edge with hardware acceleration enabled.';loading.style.display='block';document.getElementById('retry').style.display='inline-block';console.error('Model viewer error',e);});
 document.getElementById('retry').addEventListener('click',start);
 const tour=document.getElementById('tour');
