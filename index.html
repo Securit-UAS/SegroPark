@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b1018">
 <meta name="description" content="Interactive three-dimensional visual overview of Segro Park Northampton, prepared by SecurIT.">
-<title>Segro Park Northampton | SecurIT Survey Portal</title>
+<title>Segro Park Northampton | TALOS Survey Portal</title>
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 <style>
@@ -54,13 +54,47 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;min-height:0;displ
 .planner-selector{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 var(--pad) 12px}.planner-link{display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #44b6d8;border-radius:8px;background:#143141;color:#edf3f8;font-weight:650;text-decoration:none}.planner-link{transition:box-shadow .18s,border-color .18s,transform .18s}.planner-link:hover{border-color:#ff6464;box-shadow:0 0 14px #ff444477;transform:translateY(-1px)}.planner-selector .eyebrow{margin:0}.survey-access{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:700px){.survey-access{grid-template-columns:1fr}.planner-selector{margin-inline:14px}.planner-link{margin-left:auto}}
 /* Shared SecurIT portal hover treatment */
 button:hover:not(:disabled),.action:hover:not(.disabled),.project-links a:hover,.access-card a:hover,.planner-link:hover{background-color:#43232b;border-color:#ff4c5b;box-shadow:0 0 0 1px #ff4c5b55,0 0 13px #ff263f88,0 0 26px #ff263f44;}
+
+/* TALOS Survey shared visual standard v1 */
+:root{--pad:clamp(16px,2.2vw,36px)}
+body{font:14px/1.5 Inter,system-ui,-apple-system,sans-serif}
+main,.app>.intro,.app>.planner-selector,.app>.stage,.app>.control-panel,.app>.survey-access{width:calc(100% - 2 * var(--pad));max-width:2400px;margin-inline:auto}
+main{width:100%;max-width:calc(2400px + 2 * var(--pad))}
+header,.top{padding:14px var(--pad);background:#0e1621;min-height:100px}
+.logo,.securit-logo{width:177px;max-width:48vw;height:auto}
+.brand-sub,header .eyebrow{font-size:11px;color:#84cde2;letter-spacing:.13em;text-transform:uppercase}
+.securit-logo-group{align-items:flex-start;gap:3px}
+.intro,.app>.intro{padding:20px 0 14px;margin-inline:var(--pad);width:auto}
+.selector,.planner-selector,.app>.planner-selector{padding:0 0 14px;margin:0 var(--pad);width:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.app>.intro,.app>.planner-selector{margin-inline:auto;width:calc(100% - 2 * var(--pad))}
+.intro h1,h1{font-size:clamp(24px,2.2vw,38px);font-weight:750;line-height:1.15;margin:0 0 5px}
+.intro p{font-size:14px;color:var(--muted);margin:0}
+.stage,.app>.stage{height:clamp(370px,64dvh,900px);min-height:0;border-radius:15px}
+.stage:fullscreen,.app>.stage:fullscreen{width:100vw;max-width:none;height:100dvh;margin:0;border:0;border-radius:0}
+.controls,.control-panel,.app>.control-panel{background:transparent;padding:14px 0;gap:9px;margin-inline:var(--pad);width:auto;border-bottom:1px solid var(--edge)}
+.app>.control-panel{margin-inline:auto;width:calc(100% - 2 * var(--pad))}
+.cards,.survey-access,.app>.survey-access{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-block:15px}
+.card,.access-card{background:#102331;border:1px solid #2e4d60;border-radius:12px;padding:19px;gap:10px}
+.card h2,.access-card h2{font-size:16px;margin:0}
+.card p,.access-card p{color:#a1afbf;font-size:12px;line-height:1.55}
+button,.action,.access-card a,.planner-link{font:600 12px system-ui;min-height:38px;padding:10px 14px;border:1px solid #476273;border-radius:9px;background:#192e3b;color:#edf3f8;text-decoration:none;transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}
+button.primary,.primary,.planner-link{background:#16485c;border-color:#3c8298}
+.planner-link{margin-left:auto}
+button:hover:not(:disabled),.action:hover:not(.disabled),.access-card a:hover,.planner-link:hover{background:#43232b;border-color:#ff4c5b;box-shadow:0 0 0 1px #ff4c5b55,0 0 13px #ff263f88,0 0 26px #ff263f44;transform:translateY(-1px)}
+button:focus-visible,.action:focus-visible,.access-card a:focus-visible,.planner-link:focus-visible{outline:2px solid #ff6571;outline-offset:3px}
+footer,.foot{padding:15px var(--pad) 23px;color:#8193a4;font-size:11px}
+@media(min-width:2472px){main{max-width:2472px}.app>.intro,.app>.planner-selector{max-width:2400px}}
+@media(max-width:900px){.cards,.survey-access,.app>.survey-access{grid-template-columns:1fr}}
+@media(max-width:640px){.stage,.app>.stage{height:56dvh;min-height:280px}.hint,.badge,.label{display:none}.planner-link{margin-left:0}.intro h1{font-size:25px}}
+@media(prefers-reduced-motion:reduce){button,.action,.access-card a,.planner-link{transition:none}button:hover:not(:disabled),.action:hover:not(.disabled),.access-card a:hover,.planner-link:hover{transform:none}}
+
 </style>
 </head>
 <body>
 <div class="app" id="app">
-<header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">Survey &amp; 3D visualisation</div></div></div></div><span class="label">Interactive 3D survey</span></header>
+<header class="top"><div class="brand-group"><div class="brand"><div class="securit-logo-group"><img class="securit-logo" src="./assets/securit-logo.png" alt="SecurIT" width="250" height="83"><div class="brand-sub">TALOS · Survey &amp; 3D visualisation</div></div></div></div><span class="label">Interactive 3D survey</span></header>
 <div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>Segro Park Northampton</h1><p>Drone-derived textured 3D site model · Rotate, pan and zoom to explore</p></div><div class="meta">Presentation visualisation &nbsp;•&nbsp; Not for engineering measurement</div></div>
-<div class="planner-selector"><span class="eyebrow">Segro Park Northampton · Full site</span><a class="planner-link" href="./planner/v2.html">▦ Open 2D Site Planner · v2 Alpha</a></div><section class="stage" id="stage" aria-label="Interactive 3D model">
+<div class="planner-selector"><span class="eyebrow">Segro Park Northampton · Full site</span><a class="planner-link" href="./planner/v2.html">▦ Open 2D Site Planner</a></div><section class="stage" id="stage" aria-label="Interactive 3D model">
 <model-viewer id="model" alt="Photogrammetry 3D reconstruction of Segro Park Northampton" camera-controls touch-action="pan-y" shadow-intensity="0.35" exposure="1.0" camera-orbit="0deg 42deg auto" rotation-per-second="3deg" field-of-view="30deg" interaction-prompt="auto" loading="eager"></model-viewer>
 <div class="overlay" id="loading"><strong id="loadingTitle">Preparing the site model</strong><p id="loadingDesc">Your browser is loading the 3D survey. On a slower connection this may take a moment.</p><div class="track"><div class="bar" id="progress"></div></div><div class="loading-stat" id="loadingStat" role="status">Starting…</div><button id="retry" style="display:none" type="button">Retry loading</button></div>
 </section>
@@ -73,12 +107,12 @@ button:hover:not(:disabled),.action:hover:not(.disabled),.project-links a:hover,
 <button type="button" id="full">⛶ &nbsp; Full screen</button>
 <button type="button" id="link">⧉ &nbsp; Copy link</button>
 </nav>
-<section class="survey-access" aria-label="Survey model CAD and export access"><article class="access-card"><h2>2D security planning</h2><p>Plan assets, camera coverage and patrol routes using the site orthomosaic. Transfer deployable assets from v2 into the quotation builder.</p><div class="actions"><a href="./planner/v2.html">Open Security Planner v2</a><a class="secondary" href="./planner/quote.html">Quotation builder</a></div><small>Calibrate the map before using distances or coverage estimates.</small></article>
+<section class="survey-access" aria-label="Survey model CAD and export access"><article class="access-card"><h2>2D security planning</h2><p>Plan assets, camera coverage and patrol routes using the site orthomosaic. Transfer deployable assets from v2 into the quotation builder.</p><div class="actions"><a href="./planner/v2.html">Open 2D Site Planner</a><a class="secondary" href="./planner/quote.html">Quotation builder</a></div><small>Calibrate the map before using distances or coverage estimates.</small></article>
 <article class="access-card"><h2>3D terrain model</h2><p>Explore the textured aerial reconstruction using the viewer above. Rotate, zoom and switch viewpoints without specialist software.</p><small>Presentation visualisation only · Not for engineering measurement</small></article>
 <article class="access-card"><h2>CAD drawing · labelled contours</h2><p>Open the corrected 3D contour DWG in Autodesk Viewer, or download the drawing for use in CAD software and permanent project records.</p><div class="actions"><a href="https://viewer.autodesk.com/preview/id/dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YTM2MHZpZXdlci1wcm90ZWN0ZWQvdDE3OTQzOTE1ODNfODI5ZDE0MTEtMGUxMi00ZGRlLWJjMDgtNWY5YjRkMzBjZDE5LmR3Zw" target="_blank" rel="noopener noreferrer">View DWG in Autodesk ↗</a><a class="secondary" href="./downloads/Segro_Park_V2_Labelled.dwg" download="Segro_Park_V2_Labelled.dwg">↓ Download DWG (8.5 MB)</a></div><small>Autodesk shared preview is temporary (approximately 30 days from 11 November 2026). The DWG download remains available while this site is hosted.</small></article>
 <article class="access-card"><h2>Survey mapping &amp; other file exports</h2><p>Open the original DroneDeploy project for survey mapping and available downloadable datasets. Export access depends on the project share permissions.</p><div class="actions"><a href="https://www.dronedeploy.com/app2/sites/6aea03f47fdb74439c8b261c/maps/6aea05b5d8d36e37c9140090?jwt_token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZWEwNjdkNzY0OWYyZmY1NzZjOGMyZCIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.2qIS53oX9UM-9lL8G933PcZk7PpbIBiYobrE1dMqMUr2MVsL7shUZcgoPd18eMhpUYKERm1YagUNjwjHUiM67Q" target="_blank" rel="noopener noreferrer">Open DroneDeploy &amp; file exports ↗</a><a class="secondary" href="https://email.mg.dronedeploy.com/c/eJxcjMlyozoAAL9G3EJpYztwSCAk4j0g9hgvXKZAyLZAIMZgY_j6KV-nj11dXftnbvPSED5yPEohQTY0rj5xbWh7pOIutjFGBNbobFPqWSXCZUmhIX0MsY1eEOQhz6TOmVSWOAvP4rbDHUBhdzHrm-5FLQalF5PrzlD-dZqGEZB3gCOAo3me_20AjspBAhw9MMCReA76No0AR3Z5pnYFoXAIhhQhQpzKc2kFcFTruVe6rAGJmnn6PelW9ICEYomv1ReXmYxZvubPRLKR9VuLB8xm7XDcB7FniiVW4vtdZs0nyXYnK9vlz3TXjqzb3-tOLRW2puJgQdZoyb_jRxG8Jvu1OMb30wGplz8drEfVq6ki-5XJWXKcPvhXLjM1yrSLujQsZBJ-qHRNliTcPJNdsqaYWVm4lUwhzwwJPwblJuRecWLBf536uYUEvaNnoNfl1OcHVIa_sv-TCKV132yP5VtRfNLvIODqkF7dwRVuw4MxD362-wv86P60G7W5GDe_MWepWtmPugcUjoLfb29yMrk2763x8PHfAAAA___IjaOE" target="_blank" rel="noopener noreferrer">↓ Download high-resolution PDF map ↗</a></div><small>The PDF map link is supplied by DroneDeploy and is valid for approximately 30 days from 11 November 2026. The file is hosted externally; this portal does not store a permanent copy.</small><small>External project sharing permissions apply.</small></article>
 </section>
-<footer class="foot"><div class="note"><b>SecurIT</b> · Survey visualisation prepared for project review. The optimised model is for presentation only; refer to the issued CAD and survey datasets for engineering decisions.</div><div>© 2026 SecurIT · Segro Park Northampton</div></footer>
+<footer class="foot"><div class="note"><b>SecurIT</b> · Survey visualisation prepared for project review. The optimised model is for presentation only; refer to the issued CAD and survey datasets for engineering decisions.</div><div>© 2026 SecurIT · TALOS · Segro Park Northampton</div></footer>
 </div>
 <script>
 'use strict';
